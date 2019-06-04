@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuku.zaria.domain.mapper.UserRoleMapper">
+    <resultMap id="UserRoleMap" type="UserRole">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="role_code" property="roleCode"/>
+        <result column="role_name" property="roleName"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+    </resultMap>
+    <resultMap id="UserMenuMap" type="UserMenu">
+        <result column="id" property="menuId"/>
+        <result column="user_id" property="userId"/>
+        <result column="menu_code" property="menuCode"/>
+        <result column="menu_url" property="menuUrl"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_icon" property="menuIcon"/>
+    </resultMap>
+
+    <select id="listRolesByUserId" resultMap="UserRoleMap">
+        SELECT
+           u.id, u.user_id, u.role_code,
+           r.role_name, u.gmt_create, u.gmt_modified
+        FROM user_role u, role r
+        WHERE u.role_code = r.role_code
+        AND u.user_id = #{userId}
+    </select>
+
+    <select id="listMenusByUserId" resultMap="UserMenuMap">
+        SELECT
+               m.id, u.user_id, m.menu_code,
+               m.menu_name, m.menu_url, m.menu_icon
+        FROM menu m, role_menu r, user_role u
+        WHERE m.menu_code = r.menu_code
+        AND r.role_code = u.role_code
+        AND u.user_id = #{userId}
+    </select>
+</mapper>

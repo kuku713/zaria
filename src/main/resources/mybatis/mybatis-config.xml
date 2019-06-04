@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <!-- common -->
+        <typeAlias alias="Integer" type="java.lang.Integer" />
+        <typeAlias alias="Long" type="java.lang.Long" />
+        <typeAlias alias="HashMap" type="java.util.HashMap" />
+        <typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />
+        <typeAlias alias="ArrayList" type="java.util.ArrayList" />
+        <typeAlias alias="LinkedList" type="java.util.LinkedList" />
+
+        <!-- custom -->
+        <typeAlias alias="User" type="com.kuku.zaria.domain.entity.User" />
+        <typeAlias alias="DictEntity" type="com.kuku.zaria.domain.entity.DictEntry" />
+        <typeAlias alias="DictItem" type="com.kuku.zaria.domain.entity.DictItem" />
+        <typeAlias alias="Menu" type="com.kuku.zaria.domain.entity.Menu" />
+        <typeAlias alias="Role" type="com.kuku.zaria.domain.entity.Role" />
+        <typeAlias alias="RoleMenu" type="com.kuku.zaria.domain.entity.RoleMenu" />
+        <typeAlias alias="UserLogin" type="com.kuku.zaria.domain.entity.UserLogin" />
+        <typeAlias alias="UserMessage" type="com.kuku.zaria.domain.entity.UserMessage" />
+        <typeAlias alias="UserRole" type="com.kuku.zaria.domain.entity.UserRole" />
+        <typeAlias alias="UserMenu" type="com.kuku.zaria.domain.entity.UserMenu"/>
+    </typeAliases>
+</configuration>
