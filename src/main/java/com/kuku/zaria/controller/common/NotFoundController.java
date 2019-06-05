@@ -1,4 +1,4 @@
-package com.kuku.zaria.controller;
+package com.kuku.zaria.controller.common;
 
 import com.kuku.zaria.bean.dto.BaseDTO;
 import com.kuku.zaria.util.DTOUtils;

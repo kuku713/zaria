@@ -1,14 +1,9 @@
 package com.kuku.zaria.service.impl;
 
-import com.kuku.zaria.bean.dto.BaseDTO;
 import com.kuku.zaria.bean.dto.UserDTO;
-import com.kuku.zaria.bean.dto.UserMenuDTO;
-import com.kuku.zaria.bean.dto.UserRoleDTO;
 import com.kuku.zaria.common.UserConsts;
 import com.kuku.zaria.domain.entity.UserLogin;
-import com.kuku.zaria.domain.mapper.UserMapper;
-import com.kuku.zaria.domain.mapper.UserLoginMapper;
-import com.kuku.zaria.domain.mapper.UserRoleMapper;
+import com.kuku.zaria.domain.mapper.*;
 import com.kuku.zaria.service.UserService;
 import com.kuku.zaria.util.DTOUtils;
 import com.kuku.zaria.util.ValidatorUtils;
@@ -32,7 +27,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Resource
-    private UserRoleMapper userRoleMapper;
+    private RoleMapper roleMapper;
 
     @Resource
     private UserLoginMapper userLoginMapper;
@@ -57,16 +52,6 @@ public class UserServiceImpl implements UserService {
             userDTO.setLoginType(UserConsts.LOGIN_TYPE_USER_ID);
         }
         return userDTO;
-    }
-
-    @Override
-    public UserRoleDTO listUserRolesByUserId(String userId) {
-        return DTOUtils.genSuccessUserRoleDTO(userRoleMapper.listRolesByUserId(userId));
-    }
-
-    @Override
-    public UserMenuDTO listUserMenusByUserId(String userId) {
-        return DTOUtils.genSuccessUserMenuDTO(userRoleMapper.listMenusByUserId(userId));
     }
 
     @Override

@@ -24,7 +24,8 @@ public class CustomAuthcFilter extends UserFilter {
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         String url = ((HttpServletRequest)request).getServletPath();
-        if (ShiroConfiguration.LOGIN_URL.equals(url)) {
+        if (ShiroConfiguration.LOGIN_URL.equals(url)
+                || ShiroConfiguration.CAPTCHA_URL.equals(url)) {
             return true;
         }
         if(log.isInfoEnabled()) {

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuku.zaria.domain.mapper.MenuMapper">
+    <resultMap id="MenuMap" type="Menu">
+        <result column="id" property="id"/>
+        <result column="menu_code" property="menuCode"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_url" property="menuUrl"/>
+        <result column="menu_icon" property="menuIcon"/>
+        <result column="parent_code" property="parentCode"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <select id="listMenusByUserId" resultMap="MenuMap">
+        SELECT DISTINCT
+            m.id, m.menu_code, m.menu_name, m.menu_url,
+            m.menu_icon, m.parent_code, m.order_no, m.gmt_create,
+            m.gmt_modified, m.remark
+        FROM menu m, role_menu r, user_role u
+        WHERE m.menu_code = r.menu_code
+          AND r.role_code = u.role_code
+          AND u.user_id = #{userId}
+        ORDER BY m.parent_code, m.order_no
+    </select>
+
+    <select id="listAllMenus" resultMap="MenuMap">
+        SELECT
+            id, menu_code, menu_name, menu_url, menu_icon,
+            parent_code, order_no, gmt_create, gmt_modified, remark
+        FROM menu m
+        ORDER BY m.parent_code, m.order_no
+    </select>
+</mapper>

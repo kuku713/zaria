@@ -1,12 +1,14 @@
 package com.kuku.zaria.shiro;
 
 import com.kuku.zaria.bean.dto.UserDTO;
-import com.kuku.zaria.bean.dto.UserMenuDTO;
-import com.kuku.zaria.bean.dto.UserRoleDTO;
+import com.kuku.zaria.bean.dto.MenuDTO;
+import com.kuku.zaria.bean.dto.RoleDTO;
 import com.kuku.zaria.common.UserStatusEnum;
-import com.kuku.zaria.domain.entity.UserMenu;
-import com.kuku.zaria.domain.entity.UserRole;
+import com.kuku.zaria.domain.entity.Menu;
+import com.kuku.zaria.domain.entity.Role;
 import com.kuku.zaria.exception.CustomShiroException;
+import com.kuku.zaria.service.MenuService;
+import com.kuku.zaria.service.RoleService;
 import com.kuku.zaria.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -30,6 +32,12 @@ public class ShiroRealm extends AuthorizingRealm {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private MenuService menuService;
+
+    @Autowired
+    private RoleService roleService;
+
     /**
      * 角色与菜单权限添加
      * @param principalCollection
@@ -42,11 +50,11 @@ public class ShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo simpleAuthInfo = new SimpleAuthorizationInfo();
         if (StringUtils.isNotBlank(userId)) {
             // 用户所有角色
-            UserRoleDTO userRoleDTO = userService.listUserRolesByUserId(userId);
-            simpleAuthInfo.addRoles(userRoleDTO.getUserRoleList().stream().map(UserRole::getRoleCode).collect(Collectors.toList()));
+            RoleDTO roleDTO = roleService.listUserRolesByUserId(userId);
+            simpleAuthInfo.addRoles(roleDTO.getRoleList().stream().map(Role::getRoleCode).collect(Collectors.toList()));
             // 用户所有权限（菜单URL）
-            UserMenuDTO userMenuDTO = userService.listUserMenusByUserId(userId);
-            simpleAuthInfo.addStringPermissions(userMenuDTO.getUserMenuList().stream().map(UserMenu::getMenuUrl).collect(Collectors.toList()));
+            MenuDTO menuDTO = menuService.listUserMenusByUserId(userId);
+            simpleAuthInfo.addStringPermissions(menuDTO.getMenuList().stream().map(Menu::getMenuUrl).collect(Collectors.toList()));
         }
         return simpleAuthInfo;
     }

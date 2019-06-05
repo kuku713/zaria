@@ -23,6 +23,7 @@
         <mybatis-spring-boot.version>2.0.1</mybatis-spring-boot.version>
         <tk-mybatis.version>4.1.5</tk-mybatis.version>
         <tk-mybatis-spring-boot.version>2.1.5</tk-mybatis-spring-boot.version>
+        <google-kaptcha.version>2.3.2</google-kaptcha.version>
     </properties>
 
     <dependencies>
@@ -33,6 +34,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
 
         <!-- mybatis -->
@@ -81,12 +86,19 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--mysql-->
+        <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- google kaptcha -->
+        <dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>${google-kaptcha.version}</version>
         </dependency>
 
         <!-- dev -->

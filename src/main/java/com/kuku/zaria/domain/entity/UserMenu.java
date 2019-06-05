@@ -12,8 +12,6 @@ public class UserMenu {
 
     private Long menuId;
 
-    private String userId;
-
     private String menuCode;
 
     private String menuName;

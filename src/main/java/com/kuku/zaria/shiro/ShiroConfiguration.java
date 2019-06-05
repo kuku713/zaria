@@ -3,10 +3,12 @@ package com.kuku.zaria.shiro;
 import com.kuku.zaria.exception.CustomExceptionHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.cache.MapCache;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.util.SoftHashMap;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +28,8 @@ import java.util.Map;
 public class ShiroConfiguration {
 
     public static final String LOGIN_URL = "/auth/login";
+    /** 验证码URL */
+    public static final String CAPTCHA_URL = "/captcha";
 
     public static final String STATIC_URL = "/static/**";
 
@@ -34,6 +38,7 @@ public class ShiroConfiguration {
     static {
         FILTER_CHAIN_MAP.put(STATIC_URL, "anon");
         FILTER_CHAIN_MAP.put(LOGIN_URL, "anon");
+        FILTER_CHAIN_MAP.put(CAPTCHA_URL, "anon");
         // authc用来判断用户是否已登录，所以放在最前面，不能更改顺序
         FILTER_CHAIN_MAP.put("/**", "authc");
         FILTER_CHAIN_MAP.put("/admin/**", "roles[admin]");
@@ -102,6 +107,11 @@ public class ShiroConfiguration {
         matcher.setHashAlgorithmName("md5");
         matcher.setHashIterations(1);
         return matcher;
+    }
+
+    @Bean
+    public MapCache localCache() {
+        return new MapCache("zaria", new SoftHashMap());
     }
 
     @Bean(name = "exceptionHandler")

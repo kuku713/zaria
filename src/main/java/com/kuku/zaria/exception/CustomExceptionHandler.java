@@ -8,6 +8,8 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
+import org.apache.shiro.cache.MapCache;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -58,6 +60,7 @@ public class CustomExceptionHandler implements HandlerExceptionResolver {
             } else {
                 attributes.put("returnCode", ErrorCodeConsts.USER_PWD_ERR);
                 attributes.put("returnMsg", "密码错误");
+
             }
         } else if (ex instanceof UnauthenticatedException) {
             attributes.put("returnCode", ErrorCodeConsts.USER_UNAUTHENTICATED_ERR);

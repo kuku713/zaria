@@ -1,13 +1,9 @@
 package com.kuku.zaria.util;
 
-import com.kuku.zaria.bean.dto.BaseDTO;
-import com.kuku.zaria.bean.dto.UserDTO;
-import com.kuku.zaria.bean.dto.UserMenuDTO;
-import com.kuku.zaria.bean.dto.UserRoleDTO;
+import com.kuku.zaria.bean.MenuTree;
+import com.kuku.zaria.bean.dto.*;
 import com.kuku.zaria.common.ErrorCodeConsts;
-import com.kuku.zaria.domain.entity.User;
-import com.kuku.zaria.domain.entity.UserMenu;
-import com.kuku.zaria.domain.entity.UserRole;
+import com.kuku.zaria.domain.entity.*;
 
 import java.util.List;
 
@@ -36,14 +32,20 @@ public class DTOUtils {
         return dto;
     }
 
-    public static UserRoleDTO genSuccessUserRoleDTO(List<UserRole> list) {
-        UserRoleDTO dto = new UserRoleDTO(list);
+    public static RoleDTO genSuccessRoleDTO(List<Role> list) {
+        RoleDTO dto = new RoleDTO(list);
         dto.setReturnCode(ErrorCodeConsts.RETURN_CODE_SUCCESS);
         return dto;
     }
 
-    public static UserMenuDTO genSuccessUserMenuDTO(List<UserMenu> list) {
-        UserMenuDTO dto = new UserMenuDTO(list);
+    public static MenuDTO genSuccessMenuDTO(List<Menu> list) {
+        MenuDTO dto = new MenuDTO(list);
+        dto.setReturnCode(ErrorCodeConsts.RETURN_CODE_SUCCESS);
+        return dto;
+    }
+
+    public static MenuTreeDTO genSuccessMenuTreeDTO(List<MenuTree> list) {
+        MenuTreeDTO dto = new MenuTreeDTO(list);
         dto.setReturnCode(ErrorCodeConsts.RETURN_CODE_SUCCESS);
         return dto;
     }

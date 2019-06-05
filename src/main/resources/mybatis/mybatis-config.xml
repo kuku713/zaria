@@ -22,4 +22,5 @@
         <typeAlias alias="UserRole" type="com.kuku.zaria.domain.entity.UserRole" />
         <typeAlias alias="UserMenu" type="com.kuku.zaria.domain.entity.UserMenu"/>
     </typeAliases>
+
 </configuration>

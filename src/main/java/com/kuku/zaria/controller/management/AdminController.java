@@ -1,4 +1,4 @@
-package com.kuku.zaria.controller;
+package com.kuku.zaria.controller.management;
 
 import com.kuku.zaria.bean.dto.BaseDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Slf4j
 @RestController
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/mgt")
 public class AdminController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuku.zaria.domain.mapper.RoleMapper">
+    <resultMap id="RoleMap" type="Role">
+        <result column="role_id" property="roleId"/>
+        <result column="role_code" property="roleCode"/>
+        <result column="role_name" property="roleName"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="creator" property="creator"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <select id="listRolesByUserId" resultMap="RoleMap">
+        SELECT
+            r.role_id, r.role_code, r.role_name, r.creator,
+            r.parent_id, r.gmt_create, r.gmt_modified, remark
+        FROM user_role u, role r
+        WHERE u.role_code = r.role_code
+          AND u.user_id = #{userId}
+    </select>
+
+    <select id="listAllRoles" resultMap="RoleMap">
+        SELECT
+            role_id, role_code, role_name, creator,
+            parent_id, gmt_create, gmt_modified, remark
+        FROM role r
+    </select>
+</mapper>

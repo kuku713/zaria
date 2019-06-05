@@ -23,4 +23,6 @@ public class BaseDTO implements Serializable {
         this.returnCode = returnCode;
         this.returnMsg = returnMsg;
     }
+
+
 }

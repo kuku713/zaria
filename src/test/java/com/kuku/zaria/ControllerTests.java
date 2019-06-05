@@ -1,6 +1,6 @@
 package com.kuku.zaria;
 
-import com.kuku.zaria.controller.LoginController;
+import com.kuku.zaria.controller.common.LoginController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
