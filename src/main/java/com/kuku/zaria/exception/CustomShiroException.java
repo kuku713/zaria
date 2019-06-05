@@ -3,7 +3,7 @@ package com.kuku.zaria.exception;
 import org.apache.shiro.ShiroException;
 
 /**
- * @author luzh21574
+ * @author kuku713
  * @description
  * @date 2019-06-03
  */

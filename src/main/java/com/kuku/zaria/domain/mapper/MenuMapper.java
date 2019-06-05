@@ -4,7 +4,7 @@ import com.kuku.zaria.domain.entity.Menu;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
- * @author luzh21574
+ * @author kuku713
  * @description
  * @date 2019-05-12
  */

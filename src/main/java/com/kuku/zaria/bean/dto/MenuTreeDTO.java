@@ -1,7 +1,7 @@
 package com.kuku.zaria.bean.dto;
 
 /**
- * @author luzh21574
+ * @author kuku713
  * @description
  * @date 2019-06-04
  */

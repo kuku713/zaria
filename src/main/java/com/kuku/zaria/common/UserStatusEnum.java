@@ -1,7 +1,7 @@
 package com.kuku.zaria.common;
 
 /**
- * @author luzh21574
+ * @author kuku713
  * @description 用户状态枚举
  * @date 2019-05-21
  */

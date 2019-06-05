@@ -10,7 +10,7 @@ import javax.servlet.ServletResponse;
 import java.io.Serializable;
 
 /**
- * @author luzh21574
+ * @author kuku713
  * @description 自定义Shiro sessionId 获取
  * @date 2019-05-17
  */

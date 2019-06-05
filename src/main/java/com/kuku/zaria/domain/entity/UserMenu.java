@@ -3,7 +3,7 @@ package com.kuku.zaria.domain.entity;
 import lombok.Data;
 
 /**
- * @author luzh21574
+ * @author kuku713
  * @description
  * @date 2019-05-21
  */
